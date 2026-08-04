@@ -69,6 +69,12 @@ keys:
   down::
     - "down"
     - "j"
+  page_up::
+    - "pgup"
+    - "ctrl+b"
+  page_down::
+    - "pgdown"
+    - "ctrl+f"
   search::
     - "/"
   clear::
