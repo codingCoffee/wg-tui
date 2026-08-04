@@ -20,6 +20,8 @@ func validate(cfg Config) error {
 	bindings := []binding{
 		{name: "up", keys: cfg.Keys.Up},
 		{name: "down", keys: cfg.Keys.Down},
+		{name: "page_up", keys: cfg.Keys.PageUp},
+		{name: "page_down", keys: cfg.Keys.PageDown},
 		{name: "search", keys: cfg.Keys.Search},
 		{name: "clear", keys: cfg.Keys.Clear},
 		{name: "connect", keys: cfg.Keys.Connect},

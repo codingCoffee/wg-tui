@@ -292,6 +292,10 @@ func (m Model) updateBrowse(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 		m.moveSelection(-1)
 	case key.Matches(msg, m.keys.Down):
 		m.moveSelection(1)
+	case key.Matches(msg, m.keys.PageUp):
+		m.moveSelection(-m.visibleRows())
+	case key.Matches(msg, m.keys.PageDown):
+		m.moveSelection(m.visibleRows())
 	case key.Matches(msg, m.keys.Refresh):
 		m.status = "refreshing..."
 		return m, refreshCmd(m.client)
@@ -322,6 +326,13 @@ func (m Model) updateBrowseWhileSearching(msg tea.KeyMsg) (tea.Model, tea.Cmd) {
 		return m, nil
 	case msg.Type == tea.KeyDown:
 		m.moveSelection(1)
+		return m, nil
+	// Aliases like ctrl+f stay with the search input for cursor movement.
+	case msg.Type == tea.KeyPgUp:
+		m.moveSelection(-m.visibleRows())
+		return m, nil
+	case msg.Type == tea.KeyPgDown:
+		m.moveSelection(m.visibleRows())
 		return m, nil
 	case key.Matches(msg, m.keys.Search):
 		return m, nil
@@ -460,6 +471,11 @@ func (m *Model) moveSelection(delta int) {
 		return
 	}
 	m.selected = clamp(m.selected+delta, 0, len(m.filtered)-1)
+}
+
+// visibleRows returns the list pane's row capacity, also the page up/down distance.
+func (m Model) visibleRows() int {
+	return max(5, m.height-10)
 }
 
 func (m *Model) toggleHelp() {
@@ -674,7 +690,7 @@ func (m Model) listView(width int) string {
 		return strings.Join(rows, "\n")
 	}
 
-	available := max(5, m.height-10)
+	available := m.visibleRows()
 	start := max(0, m.selected-available+1)
 	if m.selected < available {
 		start = 0

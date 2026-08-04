@@ -65,6 +65,8 @@ type UIConfig struct {
 type KeysConfig struct {
 	Up         []string `koanf:"up"`
 	Down       []string `koanf:"down"`
+	PageUp     []string `koanf:"page_up"`
+	PageDown   []string `koanf:"page_down"`
 	Search     []string `koanf:"search"`
 	Clear      []string `koanf:"clear"`
 	Connect    []string `koanf:"connect"`
@@ -99,6 +101,8 @@ func Default() Config {
 		Keys: KeysConfig{
 			Up:         []string{"up", "k"},
 			Down:       []string{"down", "j"},
+			PageUp:     []string{"pgup", "ctrl+b"},
+			PageDown:   []string{"pgdown", "ctrl+f"},
 			Search:     []string{"/"},
 			Clear:      []string{"esc"},
 			Connect:    []string{"enter"},

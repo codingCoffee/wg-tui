@@ -5,6 +5,8 @@ import "github.com/charmbracelet/bubbles/key"
 type KeyMap struct {
 	Up         key.Binding
 	Down       key.Binding
+	PageUp     key.Binding
+	PageDown   key.Binding
 	Search     key.Binding
 	Clear      key.Binding
 	Connect    key.Binding
@@ -21,6 +23,8 @@ func NewKeyMap(cfg KeysConfig) KeyMap {
 	return KeyMap{
 		Up:         bind(cfg.Up, "up", "up"),
 		Down:       bind(cfg.Down, "down", "down"),
+		PageUp:     bind(cfg.PageUp, "pgup", "page up"),
+		PageDown:   bind(cfg.PageDown, "pgdown", "page down"),
 		Search:     bind(cfg.Search, "/", "search"),
 		Clear:      bind(cfg.Clear, "esc", "clear"),
 		Connect:    bind(cfg.Connect, "enter", "connect"),
@@ -39,7 +43,7 @@ func (k KeyMap) ShortHelp() []key.Binding {
 }
 
 func (k KeyMap) FullHelp() [][]key.Binding {
-	return [][]key.Binding{{k.Up, k.Down, k.Search, k.Clear, k.Connect, k.Tunnel, k.Rsync}, {k.Refresh, k.EditConfig, k.Copy, k.Help, k.Quit}}
+	return [][]key.Binding{{k.Up, k.Down, k.PageUp, k.PageDown, k.Search, k.Clear, k.Connect, k.Tunnel, k.Rsync}, {k.Refresh, k.EditConfig, k.Copy, k.Help, k.Quit}}
 }
 
 func bind(keys []string, label, desc string) key.Binding {
@@ -73,6 +77,8 @@ func keyUsedElsewhere(cfg KeysConfig, candidate string) bool {
 	bindings := [][]string{
 		cfg.Up,
 		cfg.Down,
+		cfg.PageUp,
+		cfg.PageDown,
 		cfg.Search,
 		cfg.Clear,
 		cfg.Connect,

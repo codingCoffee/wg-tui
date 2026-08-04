@@ -81,6 +81,8 @@ func (k KeysConfig) toMap() map[string]any {
 	return map[string]any{
 		"up":          k.Up,
 		"down":        k.Down,
+		"page_up":     k.PageUp,
+		"page_down":   k.PageDown,
 		"search":      k.Search,
 		"clear":       k.Clear,
 		"connect":     k.Connect,

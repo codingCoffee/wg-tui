@@ -262,6 +262,12 @@ keys:
   down::
     - "down"
     - "j"
+  page_up::
+    - "pgup"
+    - "ctrl+b"
+  page_down::
+    - "pgdown"
+    - "ctrl+f"
   search::
     - "/"
   clear::
@@ -290,6 +296,7 @@ keys:
 Browse mode:
 - `/` - focus search
 - `j` / `k` or arrow keys - move selection
+- `pgup` / `pgdown` or `ctrl+b` / `ctrl+f` - move selection one screen at a time
 - `enter` - connect to selected target
 - `t` - open tunnel form for the selected target
 - `s` - open transfer form for the selected target
