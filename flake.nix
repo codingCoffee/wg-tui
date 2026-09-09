@@ -26,7 +26,7 @@
             version = "0.0.5";
             src = self;
             subPackages = [ "cmd/wgt" ];
-            vendorHash = "sha256-Lky4soZeNEnuLZiQpRRr+M9/+UTdty4HS2xo41L+8CA=";
+            vendorHash = "sha256-AApmluLX9ldLI6Zxh5YbOMm7SUe7xrrKQzEPjlCoKbE=";
 
             meta = with pkgs.lib; {
               description = "Warpgate target picker for the terminal";
