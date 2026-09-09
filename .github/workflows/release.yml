@@ -50,17 +50,6 @@ jobs:
 
       - uses: DeterminateSystems/nix-installer-action@v3
 
-      - name: Verify release version
-        if: startsWith(github.ref, 'refs/tags/v')
-        shell: bash
-        run: |
-          expected="${GITHUB_REF_NAME#v}"
-          actual="$(sed -nE 's/^[[:space:]]*version = "([^"]+)";/\1/p' flake.nix | head -n 1)"
-          test "$actual" = "$expected" || {
-            echo "flake.nix version ($actual) does not match release tag ($GITHUB_REF_NAME)"
-            exit 1
-          }
-
       - name: Check flake
         run: nix flake check --no-build
 

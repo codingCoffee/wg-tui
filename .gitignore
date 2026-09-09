@@ -1,6 +1,7 @@
 # Binaries
 bin/
 /wgt
+/wgt-static
 *.exe
 *.exe~
 *.dll

@@ -23,7 +23,7 @@
         {
           default = pkgs.buildGoModule {
             pname = "wgt";
-            version = "0.0.5";
+            version = "unstable";
             src = self;
             subPackages = [ "cmd/wgt" ];
             vendorHash = "sha256-AApmluLX9ldLI6Zxh5YbOMm7SUe7xrrKQzEPjlCoKbE=";
